@@ -3,8 +3,10 @@ terraform {
 }
 
 provider "kubernetes" {
-	config_context = var.k8s_context
+	host = "https://34.69.199.143"
+	cluster_ca_certificate = var.ca_cert
 }
+
 
 resource "kubernetes_namespace" "tf-demo" {
 	metadata {
