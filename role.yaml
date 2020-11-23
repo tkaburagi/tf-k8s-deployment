@@ -1,9 +1,0 @@
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  namespace: kube-system # your namespace
-  name: terraforming # Role name will be needed for binding to user
-rules:
-  - apiGroups: ["extenstions, apps"]
-    resources: ["deployments","namespaces"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
