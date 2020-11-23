@@ -59,7 +59,7 @@ resource "kubernetes_deployment" "nginx" {
     replicas = 3
 
     strategy {
-      type = "RollingUpdate"
+      type = "Recreate"
     }
 
     selector {
