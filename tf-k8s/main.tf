@@ -1,5 +1,13 @@
 terraform {
   required_version = "~> 0.12"
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "tkaburagi"
+
+    workspaces {
+      name = "k8s-deployment"
+    }
+  }
 }
 
 provider "google" {
@@ -59,7 +67,7 @@ resource "kubernetes_deployment" "nginx" {
     replicas = 3
 
     strategy {
-      type = "RollingUpdate"
+      type = "Recreate"
     }
 
     selector {
@@ -91,20 +99,20 @@ resource "kubernetes_deployment" "nginx" {
             }
           }
 
-          liveness_probe {
-            http_get {
-              path = "/"
-              port = 80
-
-              http_header {
-                name  = "X-Custom-Header"
-                value = "Awesome"
-              }
-            }
-
-            initial_delay_seconds = 3
-            period_seconds        = 3
-          }
+//          liveness_probe {
+//            http_get {
+//              path = "/"
+//              port = 80
+//
+//              http_header {
+//                name  = "X-Custom-Header"
+//                value = "Awesome"
+//              }
+//            }
+//
+//            initial_delay_seconds = 3
+//            period_seconds        = 3
+//          }
         }
       }
     }
