@@ -46,7 +46,7 @@ resource "kubernetes_service" "nginx_service" {
     }
     session_affinity = "ClientIP"
     port {
-      port        = 8080
+      port        = 9090
       target_port = 80
     }
 
