@@ -92,17 +92,17 @@ resource "kubernetes_deployment" "nginx" {
               cpu    = "0.5"
               memory = "512Mi"
             }
-            requests {
+            requests = {
               cpu    = "250m"
               memory = "50Mi"
             }
           }
           liveness_probe {
-            http_get {
+            http_get = {
               path = "/"
               port = 80
 
-              http_header {
+              http_header = {
                 name  = "X-Custom-Header"
                 value = "Awesome"
               }
