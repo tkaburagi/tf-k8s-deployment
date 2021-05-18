@@ -98,7 +98,7 @@ resource "kubernetes_deployment" "nginx" {
             }
           }
           liveness_probe {
-            http_get = {
+            http_get {
               path = "/"
               port = 80
 
