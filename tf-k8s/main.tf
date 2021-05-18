@@ -1,7 +1,7 @@
 terraform {
   required_version = "~> 0.12"
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "tkaburagi"
 
     workspaces {
@@ -17,17 +17,17 @@ provider "google" {
 }
 
 data "google_container_cluster" "primary" {
-  name = "k8s-sentinel-demo-custer"
+  name     = "k8s-sentinel-demo-custer"
   location = "us-central1"
 }
 
 provider "kubernetes" {
-  host = data.google_container_cluster.primary.endpoint
-  username = data.google_container_cluster.primary.master_auth[0].username
-  password = data.google_container_cluster.primary.master_auth[0].password
+  host                   = data.google_container_cluster.primary.endpoint
+  username               = data.google_container_cluster.primary.master_auth[0].username
+  password               = data.google_container_cluster.primary.master_auth[0].password
   cluster_ca_certificate = base64decode(data.google_container_cluster.primary.master_auth[0].cluster_ca_certificate)
-  client_certificate = base64decode(data.google_container_cluster.primary.master_auth[0].client_certificate)
-  client_key = base64decode(data.google_container_cluster.primary.master_auth[0].client_key)
+  client_certificate     = base64decode(data.google_container_cluster.primary.master_auth[0].client_certificate)
+  client_key             = base64decode(data.google_container_cluster.primary.master_auth[0].client_key)
 }
 
 resource "kubernetes_namespace" "tf-demo" {
