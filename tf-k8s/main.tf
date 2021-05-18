@@ -102,7 +102,7 @@ resource "kubernetes_deployment" "nginx" {
               path = "/"
               port = 80
 
-              http_header = {
+              http_header {
                 name  = "X-Custom-Header"
                 value = "Awesome"
               }
