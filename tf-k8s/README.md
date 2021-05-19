@@ -4,7 +4,7 @@ GKE上にNginxをデプロイするためのコンフィグレーション
 
 ## Diagram
 
-![](../https://raw.githubusercontent.com/tkaburagi/tfcb-allinone/main/gcp-k8s/diagram.png)
+![](https://raw.githubusercontent.com/tkaburagi/tfcb-allinone/main/gcp-k8s/diagram.png)
 
 
 ## Applied Policy
